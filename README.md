@@ -28,3 +28,5 @@ Walkthrough
       ...
       $ grails run-app integration:
 
+1. Add validation to summary, description, fullName, workEmail. Update your
+   integrations tests.

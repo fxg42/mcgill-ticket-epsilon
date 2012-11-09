@@ -9,5 +9,7 @@ class Developer {
   String workEmail
 
   static constraints = {
+    fullName blank:false
+    workEmail blank:false, email:true
   }
 }

@@ -9,5 +9,7 @@ class Ticket {
   Date dateCreated
 
   static constraints = {
+    summary blank:false
+    description blank:false
   }
 }

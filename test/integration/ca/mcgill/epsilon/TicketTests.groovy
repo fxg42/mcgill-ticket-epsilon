@@ -23,4 +23,12 @@ class TicketTests {
     assert found.description == aDescription
     assert found.id == ticket.id
   }
+
+  @Test void should_validate_properties () {
+    def ticket = new Ticket(summary:'', description:'')
+    def wasSaved = ticket.save(flush:true)
+
+    assert ! wasSaved
+    assert ticket.errors.errorCount == 2
+  }
 }

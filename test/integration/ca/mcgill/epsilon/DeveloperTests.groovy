@@ -13,8 +13,7 @@ class DeveloperTests {
     task2 = new Task(originalTicket:ticket).save(saveOptions)
   }
 
-  @Test
-  void should_be_able_to_add_many_tasks () {
+  @Test void should_be_able_to_add_many_tasks () {
     def dave = new Developer(fullName:'Dave', workEmail:'dave@mcgill.ca').save(saveOptions)
     dave.addToTasks(task1)
     dave.addToTasks(task2)
@@ -32,5 +31,27 @@ class DeveloperTests {
     assert found.tasks.size() == 2
     assert task1 in found.tasks
     assert task2 in found.tasks
+  }
+
+  @Test void should_validate_properties () {
+    def dave = new Developer(fullName:'   \t  \n', workEmail:'dave@mcgill.ca')
+    def wasSaved = dave.save(flush:true)
+    assert ! wasSaved
+    assert dave.errors.errorCount == 1
+
+    dave = new Developer(fullName:'Dave', workEmail:'')
+    wasSaved = dave.save(flush:true)
+    assert ! wasSaved
+    assert dave.errors.errorCount == 1
+
+    dave = new Developer(fullName:'Dave', workEmail:'not an email @ddress.com')
+    wasSaved = dave.save(flush:true)
+    assert ! wasSaved
+    assert dave.errors.errorCount == 1
+
+    dave = new Developer(fullName:'Dave', workEmail:'dave@mcgill.ca')
+    wasSaved = dave.save(flush:true)
+    assert wasSaved
+    assert dave.errors.errorCount == 0
   }
 }
