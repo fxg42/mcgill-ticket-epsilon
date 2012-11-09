@@ -31,7 +31,9 @@
             <td>
               <div class="btn-group">
                 <g:link controller="ticket" action="show" id="${ticket.id}" class="btn btn-mini">show</g:link>
-                <g:link controller="task" action="createFromTicket" id="${ticket.id}" class="btn btn-mini btn-success">assign</g:link>
+                <sec:ifAllGranted roles="ROLE_MANAGER">
+                  <g:link controller="task" action="createFromTicket" id="${ticket.id}" class="btn btn-mini btn-success">assign</g:link>
+                </sec:ifAllGranted>
               </div>
             </td>
           </tr>

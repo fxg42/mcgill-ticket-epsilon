@@ -21,6 +21,13 @@ class BootStrap {
     new Developer(fullName:'Bob', workEmail:'bob@mcgill.ca').save(saveOptions)
     new Developer(fullName:'Carol', workEmail:'carol@mcgill.ca').save(saveOptions)
     new Developer(fullName:'Dave', workEmail:'dave@mcgill.ca').save(saveOptions)
+
+    def user = new User(username:'user', password:'s3cret', enabled:true, accountExpired:false, accountLocked:false, passwordExpired:false).save(failOnError:true)
+    def manager = new User(username:'manager', password:'s3cret', enabled:true, accountExpired:false, accountLocked:false, passwordExpired:false).save(failOnError:true)
+    def userAuthority = new Role(authority:'ROLE_USER').save(failOnError:true)
+    def managerAuthority = new Role(authority:'ROLE_MANAGER').save(failOnError:true)
+    UserRole.create user, userAuthority, true
+    UserRole.create manager, managerAuthority, true
   }
 
   def destroy = {

@@ -86,3 +86,12 @@ Walkthrough
    a short overview. Since sending mail takes time, email notifications should
    be triggered by a scheduled job running every 15 minutes during normal
    business hours.
+
+        $ grails compile
+        $ grails create-job ca.mcgill.epsilon.Notification
+
+1. Task creation should be restricted to known users. Furthermore, task
+   assignment should be reserved to managers.
+
+        $ grails compile
+        $ grails s2-quickstart ca.mcgill.epsilon User Role

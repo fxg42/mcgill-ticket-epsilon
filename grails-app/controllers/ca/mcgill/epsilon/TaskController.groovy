@@ -1,10 +1,13 @@
 package ca.mcgill.epsilon
 
+import grails.plugins.springsecurity.*
+
 class TaskController {
 
   def ticketService
   def taskService
 
+  @Secured(['ROLE_MANAGER'])
   def createFromTicket (Long id) {
     def foundTicket = ticketService.getPending(id)
     if (! foundTicket) {
@@ -16,6 +19,7 @@ class TaskController {
     [ task: new Task(originalTicket:foundTicket) ]
   }
 
+  @Secured(['ROLE_MANAGER'])
   def save () {
     def task = bindData(new Task(), params, [include:['originalTicket', 'responsibles']])
     try {
