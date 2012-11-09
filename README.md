@@ -79,3 +79,10 @@ Walkthrough
 
 1. Add a REST style interface to manage the `Developer` instances.
    (See [documentation](http://grails.org/doc/2.1.1/guide/single.html#REST))
+
+        $ grails create-controller ca.mcgill.epsilon.DeveloperController
+
+1. When a task is assigne to a developer, she should receive an email containing
+   a short overview. Since sending mail takes time, email notifications should
+   be triggered by a scheduled job running every 15 minutes during normal
+   business hours.

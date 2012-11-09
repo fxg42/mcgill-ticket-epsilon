@@ -9,6 +9,8 @@ class Task {
   // defines a unidirectional many-to-one relationship between Ticket and Task.
   Ticket originalTicket
 
+  Boolean notificationSent = false
+
   // automatically initialize when first saved to the database.
   Date dateCreated
 

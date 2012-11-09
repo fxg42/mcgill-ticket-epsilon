@@ -24,4 +24,30 @@ class TaskServiceTests {
     assert found == task
     assert found.originalTicket.progress.size() == 2
   }
+
+  @Test void find_all_to_notify_should_not_return_newly_created () {
+    def task = new Task(originalTicket:ticket)
+    task.save()
+
+    def found = service.findAllAssignedButNotNotified()
+    assert ! found
+  }
+
+  @Test void find_all_to_notify_should_not_return_if_notified () {
+    def task = new Task(originalTicket:ticket)
+    service.assignAndSave(task)
+    task.notificationSent = true
+    task.save()
+
+    def found = service.findAllAssignedButNotNotified()
+    assert ! found
+  }
+
+  @Test void find_all_to_notify_should_return_if_assigned_and_not_notified () {
+    def task = new Task(originalTicket:ticket)
+    service.assignAndSave(task)
+
+    def found = service.findAllAssignedButNotNotified()
+    assert found.first() == task
+  }
 }
