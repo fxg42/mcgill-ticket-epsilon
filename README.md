@@ -57,3 +57,13 @@ Walkthrough
         $ grails create-domain-class ca.mcgill.epsilon.Attachment
         $ grails create-integration-test ca.mcgill.epsilon.Attachment
 
+1. Create a controller and view so that users can create tickets and save them
+   to the database. The business logic will need to be put inside a service.
+   Duplicate, redundant or otherwise redundant or duplicate HTML markup
+   should be put inside a tag library. As always, the controller, the service
+   and the taglib should have unit tests.
+        
+        $ grails create-controller ca.mcgill.epsilon.TicketController
+        $ grails create-service ca.mcgill.epsilon.TicketService
+        $ grails create-tag-lib ca.mcgill.epsilon.Ticket
+        $ touch grails-app/views/ticket/create.gsp

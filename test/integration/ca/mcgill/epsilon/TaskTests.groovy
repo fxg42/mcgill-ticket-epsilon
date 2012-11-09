@@ -9,7 +9,7 @@ class TaskTests {
 
   // This method is ran before each `@Test` method.
   @Before void setup () {
-    bug = new TicketType(key:'BUG', description:'A bug is a bug').save(saveOptions)
+    bug = TicketType.findByKey('BUG')
     ticket = new Ticket(summary:'test summary', description:'test description', type:bug, priority:3).save(saveOptions)
     dave = new Developer(fullName:'Dave', workEmail:'dave@mcgill.ca').save(saveOptions)
   }

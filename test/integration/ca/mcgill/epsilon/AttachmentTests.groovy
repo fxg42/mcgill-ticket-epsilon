@@ -8,7 +8,7 @@ class AttachmentTests {
   def bug, ticket
 
   @Before void setup () {
-    bug = new TicketType(key:'BUG', description:'A bug is a bug').save(saveOptions)
+    bug = TicketType.findByKey('BUG')
     ticket = new Ticket(summary:'test summary', description:'a description', type:bug, priority:3)
   }
 

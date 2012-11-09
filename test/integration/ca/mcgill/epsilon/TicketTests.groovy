@@ -8,7 +8,7 @@ class TicketTests {
   def bug
 
   @Before void setup () {
-    bug = new TicketType(key:'BUG', description:'A bug is a bug').save(saveOptions)
+    bug = TicketType.findByKey('BUG')
   }
 
   @Test void should_be_able_to_save () {

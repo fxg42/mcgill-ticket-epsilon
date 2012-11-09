@@ -8,7 +8,7 @@ class DeveloperTests {
   def ticket, bug, task1, task2
 
   @Before void setup () {
-    bug = new TicketType(key:'BUG', description:'A bug is a bug').save(saveOptions)
+    bug = TicketType.findByKey('BUG')
     ticket = new Ticket(summary:'test summary', description:'test description', type:bug, priority:3).save(saveOptions)
     task1 = new Task(originalTicket:ticket).save(saveOptions)
     task2 = new Task(originalTicket:ticket).save(saveOptions)
