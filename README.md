@@ -76,3 +76,6 @@ Walkthrough
         $ touch grails-app/views/ticket/pending.gsp
         $ grails create-controller ca.mcgill.epsilon.TaskController
         $ touch grails-app/views/task/createFromTicket.gsp
+
+1. Add a REST style interface to manage the `Developer` instances.
+   (See [documentation](http://grails.org/doc/2.1.1/guide/single.html#REST))
