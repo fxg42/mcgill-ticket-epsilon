@@ -13,20 +13,20 @@ Walkthrough
    and a work email. Finally, the creation date of `Tickets` and `Tasks` must be
    recorded.
 
-      $ grails create-domain-class ca.mcgill.epsilon.Ticket
-      $ grails create-domain-class ca.mcgill.epsilon.Task
-      $ grails create-domain-class ca.mcgill.epsilon.Developer
+        $ grails create-domain-class ca.mcgill.epsilon.Ticket
+        $ grails create-domain-class ca.mcgill.epsilon.Task
+        $ grails create-domain-class ca.mcgill.epsilon.Developer
 
 1. Create integration tests for the new domain classes and verify that it is
    possible to save new instances, to wire them together and to find them in the
    database. While you're at it, check that the auto-timestamp feature described
    above actually works.
 
-      $ grails create-integration-test ca.mcgill.epsilon.Ticket
-      $ grails create-integration-test ca.mcgill.epsilon.Task
-      $ grails create-integration-test ca.mcgill.epsilon.Developer
-      ...
-      $ grails run-app integration:
+        $ grails create-integration-test ca.mcgill.epsilon.Ticket
+        $ grails create-integration-test ca.mcgill.epsilon.Task
+        $ grails create-integration-test ca.mcgill.epsilon.Developer
+        ...
+        $ grails run-app integration:
 
 1. Add validation to summary, description, fullName, workEmail. Update your
    integrations tests.
@@ -35,4 +35,4 @@ Walkthrough
    A `Ticket` also has a priority that ranges from 1 to 5. Dont forget to update
    your tests.
 
-      $ grails create-domain-class ca.mcgill.epsilon.TicketType
+        $ grails create-domain-class ca.mcgill.epsilon.TicketType
