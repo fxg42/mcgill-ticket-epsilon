@@ -1,6 +1,6 @@
 package ca.mcgill.epsilon
 
-class TicketType {
+class TicketStatus {
   String key
   String description
 

@@ -36,3 +36,14 @@ Walkthrough
    your tests.
 
         $ grails create-domain-class ca.mcgill.epsilon.TicketType
+
+1. A `Ticket` has a particular life cycle. It starts as `pending`, it is then
+   `assigned` to a developer by a manager. When the developer starts working, it
+   is `in progress` and when she finishes it becomes `closed - fix`. It can also
+   `closed - wont fix`. For statistical purposes, we also need to keep each
+   status change. Furthermore, each status change must be sorted by timestamp.
+   Finally (!), a `Ticket`, when saved, should be `pending`. Dont forget to
+   update to update your tests...
+
+        $ grails create-domain-class ca.mcgill.epsilon.TicketStatus
+        $ grails create-domain-class ca.mcgill.epsilon.TicketStatusChange
