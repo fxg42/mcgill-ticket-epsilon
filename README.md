@@ -67,3 +67,12 @@ Walkthrough
         $ grails create-service ca.mcgill.epsilon.TicketService
         $ grails create-tag-lib ca.mcgill.epsilon.Ticket
         $ touch grails-app/views/ticket/create.gsp
+
+1. Add a view that allows a manager to view all pending Tickets. Add another
+   view to show a specific Ticket with the option of assigning it to a
+   Developer.
+
+        $ grails create-integration-test ca.mcgill.epsilon.TicketServiceTests
+        $ touch grails-app/views/ticket/pending.gsp
+        $ grails create-controller ca.mcgill.epsilon.TaskController
+        $ touch grails-app/views/task/createFromTicket.gsp

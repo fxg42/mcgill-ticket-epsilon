@@ -16,6 +16,12 @@ class BootStrap {
     new TicketStatus(key:'IN_PROGRESS', description:'currently being worked on.').save(saveOptions)
     new TicketStatus(key:'CLOSED_FIXED', description:'Fixed.').save(saveOptions)
     new TicketStatus(key:'CLOSED_WONT_FIX', description:'Will not be fixed.').save(saveOptions)
+
+    new Developer(fullName:'Alice', workEmail:'alice@mcgill.ca').save(saveOptions)
+    new Developer(fullName:'Bob', workEmail:'bob@mcgill.ca').save(saveOptions)
+    new Developer(fullName:'Carol', workEmail:'carol@mcgill.ca').save(saveOptions)
+    new Developer(fullName:'Dave', workEmail:'dave@mcgill.ca').save(saveOptions)
+
   }
 
   def destroy = {

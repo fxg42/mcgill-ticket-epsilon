@@ -24,4 +24,5 @@ class TicketServiceTests {
     ticket.summary = ''
     service.save(ticket)
   }
+
 }

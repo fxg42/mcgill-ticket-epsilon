@@ -18,7 +18,7 @@
       <div class="navbar-inner">
         <ul class="nav">
           <li>
-            <a class="brand" href="#">Alpha</a>
+            <a class="brand" href="#">epsilon</a>
           </li>
           <li>
             <a href="#">section 1</a>
@@ -35,6 +35,7 @@
           <ul class="nav nav-list well">
             <li class="nav-header">Tickets</li>
             <li><g:link controller="ticket" action="create">Create new</g:link></li>
+            <li><g:link controller="ticket" action="pending">View unassigned</g:link></li>
           </ul>
         </div>
         <div class="span9">

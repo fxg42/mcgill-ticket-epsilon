@@ -23,7 +23,7 @@ class TicketControllerTests {
 
     controller.save()
 
-    assert response.text == 'save successful'
+    assert response.redirectUrl == '/ticket/pending'
   }
 
   @Test void save_should_render_proper_text_when_failed () {

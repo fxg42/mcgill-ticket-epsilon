@@ -4,6 +4,10 @@ class TicketController {
 
   def ticketService
 
+  def pending () {
+    [ tickets:ticketService.findAllPending() ]
+  }
+
   def create () {
     [ ticket:new Ticket() ]
   }
@@ -14,10 +18,11 @@ class TicketController {
       ticket.attachment = new Attachment(params.attachment.properties)
     }
     try {
-      def savedTicket = ticketService.save(ticket)
-      render('save successful')
+      ticketService.save(ticket)
+      redirect(action: 'pending')
     } catch (e) {
-      render( view:'create', model: [ ticket:ticket ] )
+      log.error("Error: ${e.message}", e)
+      render(view: 'create', model: [ ticket:ticket ])
     }
   }
 }

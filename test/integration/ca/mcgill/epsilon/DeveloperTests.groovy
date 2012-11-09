@@ -5,17 +5,17 @@ import org.junit.*
 class DeveloperTests {
 
   def saveOptions = [ flush:true, failOnError:true ]
-  def ticket, bug, task1, task2
+  def ticket, bug, dave, task1, task2
 
   @Before void setup () {
     bug = TicketType.findByKey('BUG')
+    dave = Developer.findByFullName('Dave')
     ticket = new Ticket(summary:'test summary', description:'test description', type:bug, priority:3).save(saveOptions)
     task1 = new Task(originalTicket:ticket).save(saveOptions)
     task2 = new Task(originalTicket:ticket).save(saveOptions)
   }
 
   @Test void should_be_able_to_add_many_tasks () {
-    def dave = new Developer(fullName:'Dave', workEmail:'dave@mcgill.ca').save(saveOptions)
     dave.addToTasks(task1)
     dave.addToTasks(task2)
 
