@@ -5,6 +5,8 @@ class Ticket {
   static hasMany = [ progress:TicketStatusChange ]
   SortedSet progress
 
+  static hasOne = [ attachment:Attachment ]
+
   String summary
   String description
   TicketType type
@@ -21,5 +23,6 @@ class Ticket {
     summary blank:false
     description blank:false
     priority range:1..5
+    attachment unique:true, nullable:true
   }
 }

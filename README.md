@@ -1,7 +1,9 @@
 Ticket application - epsilon version
 ================================================================================
 
-Sample Grails application meant as a teaching tool.
+Sample Grails application meant as a teaching tool. As always, the code in the
+integration and units tests is as instructive (is not more) than the __real__
+application code.
 
 Walkthrough
 --------------------------------------------------------------------------------
@@ -47,3 +49,11 @@ Walkthrough
 
         $ grails create-domain-class ca.mcgill.epsilon.TicketStatus
         $ grails create-domain-class ca.mcgill.epsilon.TicketStatusChange
+
+1. A `Ticket`can have one file `Attachment`. It's important to save not only the
+   file content but also the content type (application/pdf, image/png, etc) and
+   the original file name.
+
+        $ grails create-domain-class ca.mcgill.epsilon.Attachment
+        $ grails create-integration-test ca.mcgill.epsilon.Attachment
+
