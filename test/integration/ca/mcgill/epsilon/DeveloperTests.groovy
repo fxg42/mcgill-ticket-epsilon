@@ -5,10 +5,11 @@ import org.junit.*
 class DeveloperTests {
 
   def saveOptions = [ flush:true, failOnError:true ]
-  def ticket, task1, task2
+  def ticket, bug, task1, task2
 
   @Before void setup () {
-    ticket = new Ticket(summary:'test summary', description:'test description').save(saveOptions)
+    bug = new TicketType(key:'BUG', description:'A bug is a bug').save(saveOptions)
+    ticket = new Ticket(summary:'test summary', description:'test description', type:bug, priority:3).save(saveOptions)
     task1 = new Task(originalTicket:ticket).save(saveOptions)
     task2 = new Task(originalTicket:ticket).save(saveOptions)
   }

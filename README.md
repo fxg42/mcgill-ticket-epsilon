@@ -30,3 +30,9 @@ Walkthrough
 
 1. Add validation to summary, description, fullName, workEmail. Update your
    integrations tests.
+
+1. A `Ticket` has a type like `Bug`, `Improvement`, `New feature` or `Question`.
+   A `Ticket` also has a priority that ranges from 1 to 5. Dont forget to update
+   your tests.
+
+      $ grails create-domain-class ca.mcgill.epsilon.TicketType

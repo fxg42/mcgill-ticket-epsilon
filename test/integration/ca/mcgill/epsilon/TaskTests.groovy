@@ -5,11 +5,12 @@ import org.junit.*
 class TaskTests {
 
   def saveOptions = [ flush:true, failOnError:true ]
-  def ticket, dave
+  def ticket, bug, dave
 
   // This method is ran before each `@Test` method.
   @Before void setup () {
-    ticket = new Ticket(summary:'test summary', description:'test description').save(saveOptions)
+    bug = new TicketType(key:'BUG', description:'A bug is a bug').save(saveOptions)
+    ticket = new Ticket(summary:'test summary', description:'test description', type:bug, priority:3).save(saveOptions)
     dave = new Developer(fullName:'Dave', workEmail:'dave@mcgill.ca').save(saveOptions)
   }
 
