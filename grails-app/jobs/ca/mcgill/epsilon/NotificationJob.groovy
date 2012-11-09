@@ -12,7 +12,7 @@ class NotificationJob {
     log.info "Verifying for notifications to send."
     taskService.findAllAssignedButNotNotified().each { task ->
       mailService.sendMail {
-        to task.responsibles*.workEmail
+        to task.responsibles.workEmail.toArray()
         from "ticket-epsilon@mcgill.ca"
         subject "You've been assigned a ticket"
         body task.originalTicket.summary
