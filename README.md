@@ -2,7 +2,7 @@ Ticket application - epsilon version
 ================================================================================
 
 Sample Grails application meant as a teaching tool. As always, the code in the
-integration and units tests is as instructive (is not more) than the actual
+integration and units tests is as instructive (if not more) than the actual
 application code.
 
 Walkthrough
