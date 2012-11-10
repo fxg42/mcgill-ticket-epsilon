@@ -2,6 +2,7 @@ package ca.mcgill.epsilon
 
 class NotificationJob {
   static triggers = {
+    // fire from Monday to Friday, every 15 minutes, starting at 08:00 and firing for the last time at 17:45.
     cron cronExpression: "0 0/15 8-17 ? * MON-FRI"
   }
 
