@@ -2,7 +2,7 @@ Ticket application - epsilon version
 ================================================================================
 
 Sample Grails application meant as a teaching tool. As always, the code in the
-integration and units tests is as instructive (is not more) than the __real__
+integration and units tests is as instructive (is not more) than the actual
 application code.
 
 Walkthrough
@@ -99,5 +99,6 @@ Walkthrough
 1. When a User creates a Ticket, she becomes its commissioner. Add that the
    relationship between User and Ticket and update all tests.
 
-1. Change de default controllers and actions.
+1. Change the default routes.
+
 
