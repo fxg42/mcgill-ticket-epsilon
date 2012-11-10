@@ -99,3 +99,5 @@ Walkthrough
 1. When a User creates a Ticket, she becomes its commissioner. Add that the
    relationship between User and Ticket and update all tests.
 
+1. Change de default controllers and actions.
+
