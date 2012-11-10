@@ -11,12 +11,16 @@ class NotificationJob {
   def execute () {
     log.info "Verifying for notifications to send."
     taskService.findAllAssignedButNotNotified().each { task ->
-      mailService.sendMail {
-        to task.responsibles.workEmail.toArray()
-        from "NO_REPLY@tickets.epsilon.mcgill.ca"
-        subject "You've been assigned a ticket"
-        body task.originalTicket.summary
-      }
+
+      /** Deactivate mail service. */
+
+      // mailService.sendMail {
+      //   to task.responsibles.workEmail.toArray()
+      //   from "NO_REPLY@tickets.epsilon.mcgill.ca"
+      //   subject "You've been assigned a ticket"
+      //   body task.originalTicket.summary
+      // }
+
       log.info "Sent notification to ${task.responsibles*.fullName.join(' and ')}."
       task.notificationSent = true
       taskService.save(task)

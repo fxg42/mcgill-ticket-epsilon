@@ -14,6 +14,10 @@ class TaskService {
 
   def findAllAssignedButNotNotified () {
     def tasks = Task.findAll("from Task as task where task.notificationSent = false")
-    tasks?.findAll{ it.originalTicket.progress.first().status.key == 'ASSIGNED' }
+    tasks?.findAll{
+      def progress = it.originalTicket.progress
+      def keys = progress.status.key
+      progress.size() == 2 && 'PENDING' in keys && 'ASSIGNED' in keys
+    }
   }
 }

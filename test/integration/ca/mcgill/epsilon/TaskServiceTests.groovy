@@ -5,13 +5,14 @@ import org.junit.*
 
 class TaskServiceTests {
 
-  def service, bug, dave, ticket
+  def service, bug, dave, user, ticket
 
   @Before void setup () {
     service = new TaskService()
     bug = TicketType.findByKey('BUG')
     dave = Developer.findByFullName('Dave')
-    ticket = new Ticket(summary:'a summary', description:'a description', type:bug, priority:3).save()
+    user = User.findByUsername('user')
+    ticket = new Ticket(summary:'a summary', description:'a description', type:bug, priority:3, commissioner:user).save()
   }
 
   @Test void should_add_progress_item_to_original_ticket () {

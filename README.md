@@ -95,3 +95,7 @@ Walkthrough
 
         $ grails compile
         $ grails s2-quickstart ca.mcgill.epsilon User Role
+
+1. When a User creates a Ticket, she becomes its commissioner. Add that the
+   relationship between User and Ticket and update all tests.
+

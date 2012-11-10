@@ -5,16 +5,17 @@ import org.junit.*
 class TicketTests {
 
   def saveOptions = [ flush:true, failOnError:true ]
-  def bug
+  def bug, user
 
   @Before void setup () {
     bug = TicketType.findByKey('BUG')
+    user = User.findByUsername('user')
   }
 
   @Test void should_be_able_to_save () {
     def aSummary = 'test summary'
     def aDescription = 'test description'
-    def ticket = new Ticket(summary:aSummary, description:aDescription, type:bug, priority:3)
+    def ticket = new Ticket(summary:aSummary, description:aDescription, type:bug, priority:3, commissioner:user)
 
     def wasSaved = ticket.save(saveOptions)
 
@@ -32,7 +33,7 @@ class TicketTests {
   }
 
   @Test void should_validate_properties () {
-    def ticket = new Ticket(summary:'', description:'', type:bug, priority:6)
+    def ticket = new Ticket(summary:'', description:'', type:bug, priority:6, commissioner:user)
     def wasSaved = ticket.save(flush:true)
 
     assert ! wasSaved
@@ -40,7 +41,7 @@ class TicketTests {
   }
 
   @Test void should_add_a_status_change_before_save () {
-    def ticket = new Ticket(summary:'test summary', description:'a description', type:bug, priority:3)
+    def ticket = new Ticket(summary:'test summary', description:'a description', type:bug, priority:3, commissioner:user)
     def wasSaved = ticket.save(flush:true)
 
     assert wasSaved
@@ -53,7 +54,7 @@ class TicketTests {
     def assigned = TicketStatus.findByKey('ASSIGNED')
     def inProgress = TicketStatus.findByKey('IN_PROGRESS')
 
-    def ticket = new Ticket(summary:'test summary', description:'a description', type:bug, priority:3)
+    def ticket = new Ticket(summary:'test summary', description:'a description', type:bug, priority:3, commissioner:user)
     ticket.save(flush:true)
 
     ticket.addToProgress(status:assigned).save(flush:true)
@@ -61,8 +62,9 @@ class TicketTests {
 
     def found = Ticket.get(ticket.id)
 
-    assert found.progress.size() == 3
-    assert 'PENDING' == found.progress.first().status.key
-    assert 'IN_PROGRESS' == found.progress.last().status.key
+    def progress = found.progress.sort{it.dateCreated}
+    assert progress.size() == 3
+    assert 'PENDING' == progress.first().status.key
+    assert 'IN_PROGRESS' == progress.last().status.key
   }
 }

@@ -4,8 +4,13 @@ import grails.test.mixin.*
 import org.junit.*
 
 @TestFor(TicketController)
-@Mock([Ticket, TicketType, TicketService, Attachment])
+@Mock([Ticket, TicketType, TicketService, Attachment, User])
 class TicketControllerTests {
+
+  @Before void setup () {
+    def user = new User(username:'user', password:'s3cret', enabled:true, accountExpired:false, accountLocked:false, passwordExpired:false).save()
+    controller.springSecurityService = [currentUser: user]
+  }
 
   @Test void create_should_return_empty_ticket () {
     def model = controller.create()

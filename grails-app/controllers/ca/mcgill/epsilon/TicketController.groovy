@@ -5,6 +5,7 @@ import grails.plugins.springsecurity.*
 class TicketController {
 
   def ticketService
+  def springSecurityService
 
   @Secured(['ROLE_USER', 'ROLE_MANAGER'])
   def pending () {
@@ -22,6 +23,7 @@ class TicketController {
     if (params.attachment?.originalFilename) {
       ticket.attachment = new Attachment(params.attachment.properties)
     }
+    ticket.commissioner = springSecurityService.currentUser
     try {
       ticketService.save(ticket)
       redirect(action: 'pending')

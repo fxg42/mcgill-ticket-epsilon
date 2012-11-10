@@ -5,11 +5,12 @@ import org.junit.*
 class AttachmentTests {
 
   def saveOptions = [ flush:true, failOnError:true ]
-  def bug, ticket
+  def bug, ticket, user
 
   @Before void setup () {
     bug = TicketType.findByKey('BUG')
-    ticket = new Ticket(summary:'test summary', description:'a description', type:bug, priority:3)
+    user = User.findByUsername('user')
+    ticket = new Ticket(summary:'test summary', description:'a description', type:bug, priority:3, commissioner:user)
   }
 
   @Test void should_save_attachments () {

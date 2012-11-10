@@ -11,7 +11,8 @@ class TaskControllerTests {
   @Before void setup () {
     controller = new TaskController()
     def bug = new TicketType(key:'BUG', description:'Bug').save(flush:true)
-    ticket = new Ticket(summary:'test summary', description:'test description', type:bug, priority:3).save(saveOptions)
+    def user = User.findByUsername('user')
+    ticket = new Ticket(summary:'a summary', description:'a description', type:bug, priority:3, commissioner:user).save(saveOptions)
   }
 
   // Must be an integration test because TicketService uses HQL...

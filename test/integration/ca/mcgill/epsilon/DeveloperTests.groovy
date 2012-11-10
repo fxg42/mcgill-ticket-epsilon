@@ -5,12 +5,13 @@ import org.junit.*
 class DeveloperTests {
 
   def saveOptions = [ flush:true, failOnError:true ]
-  def ticket, bug, dave, task1, task2
+  def ticket, bug, user, dave, task1, task2
 
   @Before void setup () {
     bug = TicketType.findByKey('BUG')
     dave = Developer.findByFullName('Dave')
-    ticket = new Ticket(summary:'test summary', description:'test description', type:bug, priority:3).save(saveOptions)
+    user = User.findByUsername('user')
+    ticket = new Ticket(summary:'a summary', description:'a description', type:bug, priority:3, commissioner:user).save(saveOptions)
     task1 = new Task(originalTicket:ticket).save(saveOptions)
     task2 = new Task(originalTicket:ticket).save(saveOptions)
   }
