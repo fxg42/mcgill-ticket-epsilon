@@ -2,7 +2,7 @@ Ticket application - epsilon version
 ================================================================================
 
 Sample Grails application meant as a teaching tool. As always, the code in the
-integration and units tests is as instructive (is not more) than the actual
+integration and units tests is as instructive (if not more) than the actual
 application code.
 
 Walkthrough
@@ -45,7 +45,7 @@ Walkthrough
    `closed - wont fix`. For statistical purposes, we also need to keep each
    status change. Furthermore, each status change must be sorted by timestamp.
    Finally (!), a `Ticket`, when saved, should be `pending`. Dont forget to
-   update to update your tests...
+   update your tests...
 
         $ grails create-domain-class ca.mcgill.epsilon.TicketStatus
         $ grails create-domain-class ca.mcgill.epsilon.TicketStatusChange
@@ -61,7 +61,7 @@ Walkthrough
    to the database. The business logic will need to be put inside a service.
    Duplicate, redundant or otherwise redundant or duplicate HTML markup
    should be put inside a tag library. As always, the controller, the service
-   and the taglib should have unit tests.
+   and the taglib should have unit or integration tests.
         
         $ grails create-controller ca.mcgill.epsilon.TicketController
         $ grails create-service ca.mcgill.epsilon.TicketService
@@ -82,7 +82,7 @@ Walkthrough
 
         $ grails create-controller ca.mcgill.epsilon.DeveloperController
 
-1. When a task is assigne to a developer, she should receive an email containing
+1. When a task is assigned to a developer, she should receive an email containing
    a short overview. Since sending mail takes time, email notifications should
    be triggered by a scheduled job running every 15 minutes during normal
    business hours.
@@ -96,7 +96,7 @@ Walkthrough
         $ grails compile
         $ grails s2-quickstart ca.mcgill.epsilon User Role
 
-1. When a User creates a Ticket, she becomes its commissioner. Add that the
+1. When a User creates a Ticket, she becomes its commissioner. Add the
    relationship between User and Ticket and update all tests.
 
 1. Change the default routes.
