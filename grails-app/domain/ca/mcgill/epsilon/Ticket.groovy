@@ -2,7 +2,9 @@ package ca.mcgill.epsilon
 
 class Ticket {
 
+  SortedSet progress
   static hasMany = [ progress:TicketStatusChange ]
+
   static hasOne = [ attachment:Attachment ]
 
   User commissioner

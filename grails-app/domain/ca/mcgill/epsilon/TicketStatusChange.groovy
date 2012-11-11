@@ -1,11 +1,17 @@
 package ca.mcgill.epsilon
 
-class TicketStatusChange {
+class TicketStatusChange implements Comparable {
 
   static belongsTo = Ticket
 
   TicketStatus status
-  Date dateCreated
+
+  // Timestamp by hand instead of relying on Grails' autostamping feature.
+  Date dateCreated = new Date()
+
+  int compareTo (other) {
+    this.dateCreated <=> other.dateCreated
+  }
 
   static constraints = {
   }

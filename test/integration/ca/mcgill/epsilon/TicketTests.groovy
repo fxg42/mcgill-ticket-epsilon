@@ -62,7 +62,7 @@ class TicketTests {
 
     def found = Ticket.get(ticket.id)
 
-    def progress = found.progress.sort{it.dateCreated}
+    def progress = found.progress
     assert progress.size() == 3
     assert 'PENDING' == progress.first().status.key
     assert 'IN_PROGRESS' == progress.last().status.key
