@@ -99,6 +99,25 @@ Walkthrough
 1. When a User creates a Ticket, she becomes its commissioner. Add the
    relationship between User and Ticket and update all tests.
 
-1. Change the default routes.
+1. Change the default routes so that `http://localhost:8080/` points to
+   `http://localhost:8080/epsilon/ticket/create`.
+
+1. Create a statistics service and expose it through CXF. The service could be
+   used to calculate:
+
+   * The number of pending tickets;
+   * The mean time to completion;
+   * The number of pending vs closed tickets for the last 30 days;
+   * The user that commissions the most tickets;
+   * The fastest developer;
+   * etc...
+
+   Instead of using the GORM, use only a JDBC dataSource object to issue direct
+   SQL calls. Create an integration test to verify that the service works and
+   write a short script to post SOAP enveloppes to your service.
+
+        $ grails create-service ca.mcgill.epsilon.StatsService
+        $ grails create-integration-test ca.mcgill.epsilon.StatsService
+        $ touch scripts/callStatsWebService.groovy
 
 

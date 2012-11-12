@@ -44,6 +44,7 @@ grails.project.dependency.resolution = {
         runtime ":mail:1.0.1"
         runtime ":quartz:1.0-RC2"
         runtime ":spring-security-core:1.2.7.3"
+        runtime ":cxf:1.0.7"
 
         // Uncomment these (or add new ones) to enable additional resources capabilities
         //runtime ":zipped-resources:1.0"
