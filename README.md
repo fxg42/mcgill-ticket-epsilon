@@ -120,4 +120,13 @@ Walkthrough
         $ grails create-integration-test ca.mcgill.epsilon.StatsService
         $ touch scripts/callStatsWebService.groovy
 
+1. Create an ad hoc evaluation service and expose it through JMX. The service
+   could be used to:
+   
+   * Modify existing models;
+   * Create new models and save them to the database;
+   * Run special queries;
+   * etc...
 
+        $ grails create-service ca.mcgill.epsilon.GroovyShellService
+        $ grails create-integration-test ca.mcgill.epsilon.GroovyShellService
